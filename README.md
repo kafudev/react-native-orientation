@@ -5,13 +5,13 @@ react-native orientation
 ## Installation
 
 ```sh
-npm install react-native-orientation
+npm install @kafudev/react-native-orientation
 ```
 
 ## Usage
 
 ```js
-import Orientation from "react-native-orientation";
+import Orientation from "@kafudev/react-native-orientation";
 
 // ...
 
