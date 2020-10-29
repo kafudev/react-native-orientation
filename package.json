@@ -91,6 +91,7 @@
       "tagName": "v${version}"
     },
     "npm": {
+      "skipChecks": true,
       "publish": true
     },
     "github": {
@@ -101,6 +102,9 @@
         "preset": "angular"
       }
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "eslintConfig": {
     "extends": [
