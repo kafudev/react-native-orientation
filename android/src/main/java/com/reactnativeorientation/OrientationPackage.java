@@ -1,4 +1,4 @@
-package ccom.reactnativeorientation;
+package com.reactnativeorientation;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
