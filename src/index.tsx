@@ -1,5 +1,5 @@
 import { NativeModules, DeviceEventEmitter } from 'react-native';
-
+const { Orientation } = NativeModules;
 let listeners: any = {};
 let orientationDidChangeEvent = 'orientationDidChange';
 let specificOrientationDidChangeEvent = 'specificOrientationDidChange';
@@ -17,8 +17,11 @@ function getKey(listener: any) {
       value: 'L' + ++id,
     });
   }
-
   return listener[META];
+}
+
+export async function multiply(a: number, b: number) {
+  return await Orientation.multiply(a, b);
 }
 
 export function getOrientation(cb: any) {
@@ -54,7 +57,7 @@ export function unlockAllOrientations() {
 }
 
 export function addOrientationListener(cb: any) {
-  var key = getKey(cb);
+  let key = getKey(cb);
   listeners[key] = DeviceEventEmitter.addListener(
     orientationDidChangeEvent,
     (body: any) => {
@@ -64,7 +67,7 @@ export function addOrientationListener(cb: any) {
 }
 
 export function removeOrientationListener(cb: any) {
-  var key = getKey(cb);
+  let key = getKey(cb);
 
   if (!listeners[key]) {
     return;
@@ -100,10 +103,18 @@ export function getInitialOrientation() {
   return Orientation.initialOrientation;
 }
 
-type OrientationType = {
-  multiply(a: number, b: number): Promise<number>;
+export default {
+  multiply,
+  getOrientation,
+  getSpecificOrientation,
+  lockToPortrait,
+  lockToLandscape,
+  lockToLandscapeRight,
+  lockToLandscapeLeft,
+  unlockAllOrientations,
+  addOrientationListener,
+  removeOrientationListener,
+  addSpecificOrientationListener,
+  removeSpecificOrientationListener,
+  getInitialOrientation,
 };
-
-const { Orientation } = NativeModules;
-
-export default Orientation as OrientationType;
